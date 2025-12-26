@@ -176,9 +176,7 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 If you find MarkDown Mac useful, consider supporting its development:
 
-[![PayPal](https://img.shields.io/badge/PayPal-Donate-blue.svg?logo=paypal)](https://paypal.me/mario53128@live.com)
-
-**PayPal**: mario53128@live.com
+[![PayPal](https://img.shields.io/badge/PayPal-Donate-blue.svg?logo=paypal)](https://www.paypal.com/paypalme/marioherrera53)
 
 Your support helps maintain and improve MarkDown Mac!
 
