@@ -170,6 +170,20 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 4. Push to the branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
+---
+
+## Support the Project
+
+If you find MarkDown Mac useful, consider supporting its development:
+
+[![PayPal](https://img.shields.io/badge/PayPal-Donate-blue.svg?logo=paypal)](https://paypal.me/mario53128@live.com)
+
+**PayPal**: mario53128@live.com
+
+Your support helps maintain and improve MarkDown Mac!
+
+---
+
 ## License
 
 This project is available under the MIT License. See LICENSE file for details.
