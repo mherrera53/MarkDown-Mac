@@ -1,0 +1,1160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Markdown Mac - Minimal</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/codemirror.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/theme/monokai.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.2.0/github-markdown.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css">
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', sans-serif;
+            margin: 0;
+            background: #f6f6f6;
+            color: #1d1d1f;
+            height: 100vh;
+            overflow: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        .app-container {
+            display: flex;
+            height: 100vh;
+        }
+        
+        .sidebar {
+            width: 280px;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-right: 1px solid rgba(0, 0, 0, 0.1);
+            padding: 16px;
+            overflow-y: auto;
+        }
+        
+        .search-bar {
+            width: 100%;
+            padding: 12px;
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            color: #1d1d1f;
+            margin-bottom: 20px;
+            font-size: 14px;
+            transition: all 0.2s ease;
+        }
+        
+        .search-bar:focus {
+            outline: none;
+            border-color: #007aff;
+            box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.1);
+        }
+        
+        .note-item {
+            padding: 12px;
+            cursor: pointer;
+            border-radius: 8px;
+            margin-bottom: 6px;
+            transition: all 0.2s ease;
+            border: 1px solid transparent;
+        }
+        
+        .note-item:hover {
+            background: rgba(0, 122, 255, 0.06);
+            border-color: rgba(0, 122, 255, 0.2);
+        }
+        
+        .note-item.active {
+            background: #007aff;
+            color: white;
+            box-shadow: 0 2px 8px rgba(0, 122, 255, 0.3);
+        }
+        
+        .main-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .toolbar {
+            height: 52px;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            padding: 0 16px;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        
+        .toolbar button {
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            color: #1d1d1f;
+            padding: 8px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            -webkit-app-region: no-drag;
+        }
+        
+        .toolbar button:hover {
+            background: rgba(0, 122, 255, 0.1);
+            border-color: #007aff;
+            transform: translateY(-1px);
+        }
+        
+        .toolbar button:active {
+            transform: translateY(0);
+        }
+        
+        .image-drop-zone {
+            border: 2px dashed #444;
+            border-radius: 4px;
+            padding: 20px;
+            text-align: center;
+            margin: 10px 0;
+            transition: all 0.3s ease;
+        }
+        
+        .image-drop-zone.drag-over {
+            border-color: #0e639c;
+            background: rgba(14, 99, 156, 0.1);
+        }
+        
+        .image-preview {
+            max-width: 100%;
+            max-height: 300px;
+            margin: 10px 0;
+            border-radius: 4px;
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+        }
+        
+        .modal-content {
+            background: #2d2d30;
+            margin: 50px auto;
+            padding: 20px;
+            border-radius: 8px;
+            width: 80%;
+            max-width: 600px;
+            color: #fff;
+        }
+        
+        .publish-options {
+            display: flex;
+            gap: 10px;
+            margin: 15px 0;
+        }
+        
+        .tag-input {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            margin: 10px 0;
+        }
+        
+        .tag {
+            background: #0e639c;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 12px;
+            cursor: pointer;
+        }
+        
+        .tag-remove {
+            margin-left: 5px;
+            cursor: pointer;
+            color: #ff6666;
+        }
+        
+        .workspace {
+            flex: 1;
+            display: flex;
+            overflow: hidden;
+            background: #ffffff;
+        }
+        
+        .pane {
+            height: 100%;
+            overflow: auto;
+        }
+        
+        .editor-pane {
+            flex: 1;
+            background: #ffffff;
+        }
+        
+        .preview-pane {
+            flex: 1;
+            background: #fafafa;
+            padding: 24px;
+            overflow-y: auto;
+            border-left: 1px solid rgba(0, 0, 0, 0.1);
+        }
+        
+        .resizer {
+            width: 8px;
+            background: rgba(0, 0, 0, 0.05);
+            cursor: col-resize;
+            transition: background 0.2s ease;
+            position: relative;
+        }
+        
+        .resizer:hover {
+            background: rgba(0, 122, 255, 0.2);
+        }
+        
+        .resizer::before {
+            content: '';
+            position: absolute;
+            left: 3px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 2px;
+            height: 20px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 1px;
+        }
+        
+        .CodeMirror {
+            height: 100%;
+            font-family: 'SF Mono', 'Monaco', 'Menlo', monospace;
+            font-size: 14px;
+            background: #ffffff;
+            color: #1d1d1f;
+        }
+        
+        .CodeMirror-selected {
+            background: rgba(0, 122, 255, 0.15);
+        }
+        
+        .markdown-body {
+            color: #1d1d1f;
+            background: transparent;
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif;
+            line-height: 1.6;
+        }
+        
+        .markdown-body h1, .markdown-body h2, .markdown-body h3 {
+            color: #1d1d1f;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            font-weight: 700;
+        }
+        
+        .markdown-body h1 { font-size: 2.2em; margin-top: 0; }
+        .markdown-body h2 { font-size: 1.8em; }
+        .markdown-body h3 { font-size: 1.4em; }
+        
+        .markdown-body pre {
+            background: #f6f6f6;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            padding: 16px;
+            font-family: 'SF Mono', 'Monaco', 'Menlo', monospace;
+        }
+        
+        .markdown-body code {
+            background: #f0f0f0;
+            padding: 3px 6px;
+            border-radius: 4px;
+            font-family: 'SF Mono', 'Monaco', 'Menlo', monospace;
+            font-size: 0.9em;
+        }
+        
+        .markdown-body blockquote {
+            border-left: 4px solid #007aff;
+            background: rgba(0, 122, 255, 0.05);
+            padding: 12px 16px;
+            margin: 16px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .markdown-body a {
+            color: #007aff;
+            text-decoration: none;
+        }
+        
+        .markdown-body a:hover {
+            text-decoration: underline;
+        }
+        
+        .markdown-body table {
+            border-collapse: collapse;
+            margin: 16px 0;
+        }
+        
+        .markdown-body th, .markdown-body td {
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            padding: 8px 12px;
+        }
+        
+        .markdown-body th {
+            background: #f6f6f6;
+            font-weight: 600;
+        }
+        
+        .new-note-btn {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, #007aff 0%, #0056d6 100%);
+            border: none;
+            color: white;
+            border-radius: 12px;
+            cursor: pointer;
+            margin-bottom: 20px;
+            font-size: 15px;
+            font-weight: 600;
+            box-shadow: 0 4px 12px rgba(0, 122, 255, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .new-note-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 122, 255, 0.4);
+        }
+        
+        .new-note-btn:active {
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <div class="sidebar">
+            <button class="new-note-btn" onclick="createNewNote()">+ New Note</button>
+            <input type="text" class="search-bar" placeholder="Search notes..." onkeyup="searchNotes(this.value)">
+            <div id="notes-list"></div>
+        </div>
+        
+        <div class="main-content">
+            <div class="toolbar">
+                <button onclick="insertMarkdown('**', '**')">Bold</button>
+                <button onclick="insertMarkdown('*', '*')">Italic</button>
+                <button onclick="insertMarkdown('# ', '')">H1</button>
+                <button onclick="insertMarkdown('## ', '')">H2</button>
+                <button onclick="insertMarkdown('```\n', '\n```')">Code</button>
+                <button onclick="insertMarkdown('[', '](url)')">Link</button>
+                <button onclick="showImageUpload()">📷 Image</button>
+                <button onclick="showPublishModal()">🌐 Publish</button>
+                <button onclick="showExportModal()">📄 Export</button>
+                <button onclick="showTagsModal()">🏷️ Tags</button>
+                <button onclick="toggleTheme()" id="theme-toggle">🌙 Dark</button>
+                <button onclick="togglePreview()" id="preview-toggle">Hide Preview</button>
+            </div>
+            
+            <div class="workspace">
+                <div class="pane editor-pane" id="editor-pane">
+                    <textarea id="editor"></textarea>
+                    <div id="image-drop-zone" class="image-drop-zone" style="display: none;">
+                        <p>📷 Drop images here or click to upload</p>
+                        <input type="file" id="file-input" accept="image/*" multiple style="display: none;">
+                    </div>
+                </div>
+                
+                <div class="resizer" id="resizer"></div>
+                
+                <div class="pane preview-pane" id="preview-pane">
+                    <div id="preview" class="markdown-body"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Image Upload Modal -->
+    <div id="image-modal" class="modal">
+        <div class="modal-content">
+            <h3>📷 Upload & Resize Images</h3>
+            <div class="image-drop-zone" id="modal-drop-zone">
+                <p>Drop images here or click to select</p>
+                <input type="file" id="modal-file-input" accept="image/*" multiple>
+            </div>
+            <div id="image-previews"></div>
+            <div style="margin-top: 20px;">
+                <label>Max Width: <input type="number" id="max-width" value="800" style="width: 80px; margin-left: 10px;">px</label>
+            </div>
+            <div style="margin-top: 20px; text-align: right;">
+                <button onclick="closeImageModal()">Cancel</button>
+                <button onclick="insertImages()" style="background: #007aff; color: white;">Insert Images</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Publish Modal -->
+    <div id="publish-modal" class="modal">
+        <div class="modal-content">
+            <h3>🌐 Publish to Web</h3>
+            <div class="publish-options">
+                <button onclick="publishToGitHub()">GitHub Pages</button>
+                <button onclick="publishToNetlify()">Netlify</button>
+                <button onclick="exportHTML()">Export HTML</button>
+            </div>
+            <div style="margin-top: 20px;">
+                <label>Custom Domain: <input type="text" id="custom-domain" placeholder="example.com" style="width: 200px; margin-left: 10px;"></label>
+            </div>
+            <div style="margin-top: 20px; text-align: right;">
+                <button onclick="closePublishModal()">Cancel</button>
+                <button onclick="startPublish()" style="background: #007aff; color: white;">Publish</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Export Modal -->
+    <div id="export-modal" class="modal">
+        <div class="modal-content">
+            <h3>📄 Export Options</h3>
+            <div class="publish-options">
+                <button onclick="exportMarkdown()">Markdown (.md)</button>
+                <button onclick="exportPDF()">PDF</button>
+                <button onclick="exportHTML()">HTML</button>
+                <button onclick="exportDocx()">Word (.docx)</button>
+            </div>
+            <div style="margin-top: 20px; text-align: right;">
+                <button onclick="closeExportModal()">Cancel</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Tags Modal -->
+    <div id="tags-modal" class="modal">
+        <div class="modal-content">
+            <h3>🏷️ Tags & Categories</h3>
+            <div style="margin: 20px 0;">
+                <label>Tags:</label>
+                <div class="tag-input" id="tag-input"></div>
+                <input type="text" id="new-tag" placeholder="Add tag..." style="width: 100%; margin-top: 10px; padding: 8px; border: 1px solid #ddd; border-radius: 4px;">
+            </div>
+            <div style="margin: 20px 0;">
+                <label>Category:</label>
+                <select id="category-select" style="width: 100%; margin-top: 10px; padding: 8px; border: 1px solid #ddd; border-radius: 4px;">
+                    <option value="">Select category...</option>
+                    <option value="work">Work</option>
+                    <option value="personal">Personal</option>
+                    <option value="ideas">Ideas</option>
+                    <option value="projects">Projects</option>
+                </select>
+            </div>
+            <div style="margin-top: 20px; text-align: right;">
+                <button onclick="closeTagsModal()">Cancel</button>
+                <button onclick="saveTags()" style="background: #007aff; color: white;">Save</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/mode/markdown/markdown.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/9.1.2/marked.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    
+    <script>
+        let notes = JSON.parse(localStorage.getItem('markdown-notes') || '[]');
+        let currentNoteId = null;
+        let showPreview = true;
+        
+        // Initialize CodeMirror with Apple-like theme
+        const editor = CodeMirror.fromTextArea(document.getElementById('editor'), {
+            mode: 'markdown',
+            theme: 'default',
+            lineNumbers: false,
+            lineWrapping: true,
+            placeholder: 'Start typing your markdown...',
+            extraKeys: {
+                "Cmd-B": () => insertMarkdown('**', '**'),
+                "Cmd-I": () => insertMarkdown('*', '*'),
+                "Cmd-1": () => insertMarkdown('# ', ''),
+                "Cmd-2": () => insertMarkdown('## ', ''),
+                "Cmd-K": () => insertMarkdown('[', '](url)'),
+                "Shift-Cmd-V": () => showImageUpload()
+            }
+        });
+        
+        // Initialize marked
+        marked.setOptions({
+            highlight: function(code, lang) {
+                if (lang && hljs.getLanguage(lang)) {
+                    return hljs.highlight(code, { language: lang }).value;
+                }
+                return hljs.highlightAuto(code).value;
+            },
+            breaks: true,
+            gfm: true
+        });
+        
+        // Editor change listener
+        editor.on('change', debounce(() => {
+            updatePreview();
+            saveCurrentNote();
+        }, 300));
+        
+        // Image handling variables
+        let uploadedImages = [];
+        let noteTags = {};
+        let noteCategories = {};
+        let currentTheme = 'light';
+        
+        // Note management
+        function createNewNote() {
+            const note = {
+                id: Date.now().toString(),
+                title: 'Untitled Note',
+                content: '',
+                created: new Date().toISOString(),
+                modified: new Date().toISOString()
+            };
+            
+            notes.unshift(note);
+            saveNotes();
+            renderNotesList();
+            selectNote(note.id);
+        }
+        
+        function selectNote(noteId) {
+            currentNoteId = noteId;
+            const note = notes.find(n => n.id === noteId);
+            if (note) {
+                editor.setValue(note.content || '');
+                updatePreview();
+                
+                // Update active state
+                document.querySelectorAll('.note-item').forEach(item => {
+                    item.classList.remove('active');
+                });
+                document.querySelector(`[data-note-id="${noteId}"]`)?.classList.add('active');
+            }
+        }
+        
+        function deleteNote(noteId) {
+            if (confirm('Delete this note?')) {
+                notes = notes.filter(n => n.id !== noteId);
+                if (currentNoteId === noteId) {
+                    currentNoteId = null;
+                    editor.setValue('');
+                }
+                saveNotes();
+                renderNotesList();
+            }
+        }
+        
+        function renameNote(noteId) {
+            const note = notes.find(n => n.id === noteId);
+            if (note) {
+                const newTitle = prompt('Rename note:', note.title);
+                if (newTitle && newTitle !== note.title) {
+                    note.title = newTitle;
+                    note.modified = new Date().toISOString();
+                    saveNotes();
+                    renderNotesList();
+                }
+            }
+        }
+        
+        function searchNotes(query) {
+            renderNotesList(query);
+        }
+        
+        function renderNotesList(searchQuery = '') {
+            const notesList = document.getElementById('notes-list');
+            const filteredNotes = searchQuery 
+                ? notes.filter(note => 
+                    note.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                    note.content.toLowerCase().includes(searchQuery.toLowerCase())
+                  )
+                : notes;
+            
+            notesList.innerHTML = filteredNotes.map(note => `
+                <div class="note-item ${note.id === currentNoteId ? 'active' : ''}" 
+                     data-note-id="${note.id}" 
+                     onclick="selectNote('${note.id}')">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <span>${note.title}</span>
+                        <div>
+                            <button onclick="event.stopPropagation(); renameNote('${note.id}')" style="font-size: 10px; padding: 2px 4px;">✏️</button>
+                            <button onclick="event.stopPropagation(); deleteNote('${note.id}')" style="font-size: 10px; padding: 2px 4px;">🗑️</button>
+                        </div>
+                    </div>
+                    <div style="font-size: 11px; color: #999; margin-top: 4px;">
+                        ${new Date(note.modified).toLocaleDateString()}
+                    </div>
+                </div>
+            `).join('');
+        }
+        
+        function saveCurrentNote() {
+            if (!currentNoteId) return;
+            
+            const note = notes.find(n => n.id === currentNoteId);
+            if (note) {
+                note.content = editor.getValue();
+                note.modified = new Date().toISOString();
+                
+                // Auto-generate title from first line if still "Untitled Note"
+                if (note.title === 'Untitled Note') {
+                    const firstLine = note.content.split('\n')[0].replace(/^#+\s*/, '');
+                    if (firstLine.trim()) {
+                        note.title = firstLine.substring(0, 50);
+                        renderNotesList();
+                    }
+                }
+                
+                saveNotes();
+            }
+        }
+        
+        function saveNotes() {
+            localStorage.setItem('markdown-notes', JSON.stringify(notes));
+        }
+        
+        function updatePreview() {
+            const preview = document.getElementById('preview');
+            preview.innerHTML = marked.parse(editor.getValue());
+        }
+        
+        function insertMarkdown(before, after) {
+            const cursor = editor.getCursor();
+            const selectedText = editor.getSelection();
+            editor.replaceSelection(before + selectedText + after);
+            
+            // Position cursor appropriately
+            if (after === '](url)') {
+                editor.setCursor({ line: cursor.line, ch: cursor.ch + before.length + selectedText.length });
+                editor.setSelection(
+                    { line: cursor.line, ch: cursor.ch + before.length + selectedText.length },
+                    { line: cursor.line, ch: cursor.ch + before.length + selectedText.length + 3 }
+                );
+            }
+            editor.focus();
+        }
+        
+        function togglePreview() {
+            showPreview = !showPreview;
+            const previewPane = document.getElementById('preview-pane');
+            const resizer = document.getElementById('resizer');
+            const toggleBtn = document.getElementById('preview-toggle');
+            
+            if (showPreview) {
+                previewPane.style.display = 'block';
+                resizer.style.display = 'block';
+                toggleBtn.textContent = 'Hide Preview';
+            } else {
+                previewPane.style.display = 'none';
+                resizer.style.display = 'none';
+                toggleBtn.textContent = 'Show Preview';
+            }
+        }
+        
+        function debounce(func, wait) {
+            let timeout;
+            return function executedFunction(...args) {
+                const later = () => {
+                    clearTimeout(timeout);
+                    func(...args);
+                };
+                clearTimeout(timeout);
+                timeout = setTimeout(later, wait);
+            };
+        }
+        
+        // Resizer functionality
+        let isResizing = false;
+        const resizer = document.getElementById('resizer');
+        const editorPane = document.getElementById('editor-pane');
+        const previewPane = document.getElementById('preview-pane');
+        
+        resizer.addEventListener('mousedown', (e) => {
+            isResizing = true;
+            document.body.style.cursor = 'col-resize';
+            e.preventDefault();
+        });
+        
+        document.addEventListener('mousemove', (e) => {
+            if (!isResizing) return;
+            
+            const containerWidth = document.querySelector('.workspace').offsetWidth;
+            const newEditorWidth = e.clientX - resizer.offsetLeft;
+            const percentage = (newEditorWidth / containerWidth) * 100;
+            
+            if (percentage > 20 && percentage < 80) {
+                editorPane.style.flex = `0 0 ${percentage}%`;
+                previewPane.style.flex = `0 0 ${100 - percentage}%`;
+            }
+        });
+        
+        document.addEventListener('mouseup', () => {
+            isResizing = false;
+            document.body.style.cursor = 'default';
+        });
+        
+        // Image Upload Functions
+        function showImageUpload() {
+            document.getElementById('image-modal').style.display = 'block';
+            setupImageDropZone();
+        }
+        
+        function closeImageModal() {
+            document.getElementById('image-modal').style.display = 'none';
+            uploadedImages = [];
+            document.getElementById('image-previews').innerHTML = '';
+        }
+        
+        function setupImageDropZone() {
+            const dropZone = document.getElementById('modal-drop-zone');
+            const fileInput = document.getElementById('modal-file-input');
+            
+            dropZone.addEventListener('click', () => fileInput.click());
+            
+            dropZone.addEventListener('dragover', (e) => {
+                e.preventDefault();
+                dropZone.classList.add('drag-over');
+            });
+            
+            dropZone.addEventListener('dragleave', () => {
+                dropZone.classList.remove('drag-over');
+            });
+            
+            dropZone.addEventListener('drop', (e) => {
+                e.preventDefault();
+                dropZone.classList.remove('drag-over');
+                handleImageFiles(e.dataTransfer.files);
+            });
+            
+            fileInput.addEventListener('change', (e) => {
+                handleImageFiles(e.target.files);
+            });
+        }
+        
+        function handleImageFiles(files) {
+            const previews = document.getElementById('image-previews');
+            previews.innerHTML = '';
+            
+            Array.from(files).forEach(file => {
+                if (file.type.startsWith('image/')) {
+                    const reader = new FileReader();
+                    reader.onload = (e) => {
+                        const img = new Image();
+                        img.onload = () => {
+                            const maxWidth = parseInt(document.getElementById('max-width').value);
+                            const resized = resizeImage(img, maxWidth);
+                            
+                            uploadedImages.push({
+                                name: file.name,
+                                data: resized.data,
+                                width: resized.width,
+                                height: resized.height
+                            });
+                            
+                            previews.innerHTML += `
+                                <div style="margin: 10px; display: inline-block;">
+                                    <img src="${resized.data}" class="image-preview" style="max-width: 150px;">
+                                    <p style="text-align: center; margin: 5px 0; font-size: 12px;">${file.name}</p>
+                                    <p style="text-align: center; margin: 0; font-size: 11px; color: #666;">${resized.width}x${resized.height}</p>
+                                </div>
+                            `;
+                        };
+                        img.src = e.target.result;
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
+        }
+        
+        function resizeImage(img, maxWidth) {
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+            
+            let width = img.width;
+            let height = img.height;
+            
+            if (width > maxWidth) {
+                height = (maxWidth / width) * height;
+                width = maxWidth;
+            }
+            
+            canvas.width = width;
+            canvas.height = height;
+            
+            ctx.drawImage(img, 0, 0, width, height);
+            
+            return {
+                data: canvas.toDataURL('image/jpeg', 0.8),
+                width: Math.round(width),
+                height: Math.round(height)
+            };
+        }
+        
+        function insertImages() {
+            if (uploadedImages.length === 0) return;
+            
+            let markdown = '';
+            uploadedImages.forEach(img => {
+                markdown += `![${img.name}](${img.data})\n\n`;
+            });
+            
+            const cursor = editor.getCursor();
+            editor.replaceSelection(markdown);
+            editor.focus();
+            closeImageModal();
+        }
+        
+        // Drag & Drop for editor
+        const editorPane = document.getElementById('editor-pane');
+        const dropZone = document.getElementById('image-drop-zone');
+        
+        editorPane.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            if (e.dataTransfer.types.includes('Files')) {
+                dropZone.style.display = 'block';
+                dropZone.classList.add('drag-over');
+            }
+        });
+        
+        editorPane.addEventListener('dragleave', (e) => {
+            if (e.target === editorPane) {
+                dropZone.style.display = 'none';
+                dropZone.classList.remove('drag-over');
+            }
+        });
+        
+        editorPane.addEventListener('drop', (e) => {
+            e.preventDefault();
+            dropZone.style.display = 'none';
+            dropZone.classList.remove('drag-over');
+            
+            if (e.dataTransfer.files.length > 0) {
+                showImageUpload();
+                handleImageFiles(e.dataTransfer.files);
+            }
+        });
+        
+        // Publish Functions
+        function showPublishModal() {
+            document.getElementById('publish-modal').style.display = 'block';
+        }
+        
+        function closePublishModal() {
+            document.getElementById('publish-modal').style.display = 'none';
+        }
+        
+        function startPublish() {
+            const note = notes.find(n => n.id === currentNoteId);
+            if (!note) return;
+            
+            const content = note.content;
+            const title = note.title;
+            
+            // Simple HTML generation for demo
+            const html = generateHTMLPage(title, content);
+            
+            // Create blob and download
+            const blob = new Blob([html], { type: 'text/html' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `${title}.html`;
+            a.click();
+            
+            closePublishModal();
+            alert('Published! HTML file downloaded.');
+        }
+        
+        function publishToGitHub() {
+            alert('GitHub Pages integration would require GitHub API setup and OAuth authentication.');
+        }
+        
+        function publishToNetlify() {
+            alert('Netlify deployment would require Netlify API access and configuration.');
+        }
+        
+        function generateHTMLPage(title, content) {
+            return `
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>${title}</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.2.0/github.min.css">
+    <style>
+        body { max-width: 800px; margin: 40px auto; padding: 0 20px; }
+        .markdown-body { box-sizing: border-box; min-width: 200px; max-width: 100%; }
+    </style>
+</head>
+<body>
+    <article class="markdown-body">
+        ${marked.parse(content)}
+    </article>
+</body>
+</html>`;
+        }
+        
+        // Export Functions
+        function showExportModal() {
+            document.getElementById('export-modal').style.display = 'block';
+        }
+        
+        function closeExportModal() {
+            document.getElementById('export-modal').style.display = 'none';
+        }
+        
+        function exportMarkdown() {
+            const note = notes.find(n => n.id === currentNoteId);
+            if (!note) return;
+            
+            const blob = new Blob([note.content], { type: 'text/markdown' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `${note.title}.md`;
+            a.click();
+            
+            closeExportModal();
+        }
+        
+        function exportPDF() {
+            alert('PDF export requires server-side processing or libraries like jsPDF. For demo purposes, consider printing the preview to PDF using browser\'s print function.');
+        }
+        
+        function exportHTML() {
+            const note = notes.find(n => n.id === currentNoteId);
+            if (!note) return;
+            
+            const html = generateHTMLPage(note.title, note.content);
+            const blob = new Blob([html], { type: 'text/html' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `${note.title}.html`;
+            a.click();
+            
+            closeExportModal();
+        }
+        
+        function exportDocx() {
+            alert('DOCX export requires libraries like docx.js or server-side processing.');
+        }
+        
+        // Tags Functions
+        function showTagsModal() {
+            document.getElementById('tags-modal').style.display = 'block';
+            loadCurrentTags();
+        }
+        
+        function closeTagsModal() {
+            document.getElementById('tags-modal').style.display = 'none';
+        }
+        
+        function loadCurrentTags() {
+            if (!currentNoteId) return;
+            
+            const tags = noteTags[currentNoteId] || [];
+            const category = noteCategories[currentNoteId] || '';
+            
+            const tagInput = document.getElementById('tag-input');
+            tagInput.innerHTML = tags.map(tag => `
+                <span class="tag">
+                    ${tag}
+                    <span class="tag-remove" onclick="removeTag('${tag}')">×</span>
+                </span>
+            `).join('');
+            
+            document.getElementById('category-select').value = category;
+        }
+        
+        function addTag() {
+            const input = document.getElementById('new-tag');
+            const tag = input.value.trim();
+            
+            if (!tag || !currentNoteId) return;
+            
+            if (!noteTags[currentNoteId]) {
+                noteTags[currentNoteId] = [];
+            }
+            
+            if (!noteTags[currentNoteId].includes(tag)) {
+                noteTags[currentNoteId].push(tag);
+                input.value = '';
+                loadCurrentTags();
+                saveTags();
+            }
+        }
+        
+        function removeTag(tag) {
+            if (!currentNoteId || !noteTags[currentNoteId]) return;
+            
+            noteTags[currentNoteId] = noteTags[currentNoteId].filter(t => t !== tag);
+            loadCurrentTags();
+        }
+        
+        function saveTags() {
+            const category = document.getElementById('category-select').value;
+            noteCategories[currentNoteId] = category;
+            
+            localStorage.setItem('markdown-notes-tags', JSON.stringify(noteTags));
+            localStorage.setItem('markdown-notes-categories', JSON.stringify(noteCategories));
+            
+            renderNotesList();
+        }
+        
+        // Enhanced note saving
+        function saveCurrentNote() {
+            if (!currentNoteId) return;
+            
+            const note = notes.find(n => n.id === currentNoteId);
+            if (note) {
+                note.content = editor.getValue();
+                note.modified = new Date().toISOString();
+                
+                // Auto-generate title from first line if still "Untitled Note"
+                if (note.title === 'Untitled Note') {
+                    const firstLine = note.content.split('\n')[0].replace(/^#+\s*/, '');
+                    if (firstLine.trim()) {
+                        note.title = firstLine.substring(0, 50);
+                        renderNotesList();
+                    }
+                }
+                
+                saveNotes();
+            }
+        }
+        
+        // Initialize
+        renderNotesList();
+        
+        // Load saved data
+        noteTags = JSON.parse(localStorage.getItem('markdown-notes-tags') || '{}');
+        noteCategories = JSON.parse(localStorage.getItem('markdown-notes-categories') || '{}');
+        
+        // Load theme
+        loadTheme();
+        
+        // Setup tag input
+        document.getElementById('new-tag').addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                addTag();
+            }
+        });
+        
+        if (notes.length === 0) {
+            createNewNote();
+        } else {
+            selectNote(notes[0].id);
+        }
+        
+        // Close modals on ESC key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                document.querySelectorAll('.modal').forEach(modal => {
+                    modal.style.display = 'none';
+                });
+            }
+        });
+        
+        // Theme switching
+        function toggleTheme() {
+            currentTheme = currentTheme === 'light' ? 'dark' : 'light';
+            applyTheme(currentTheme);
+            localStorage.setItem('markdown-app-theme', currentTheme);
+            
+            const themeBtn = document.getElementById('theme-toggle');
+            themeBtn.textContent = currentTheme === 'light' ? '🌙 Dark' : '☀️ Light';
+        }
+        
+        function applyTheme(theme) {
+            const body = document.body;
+            const sidebar = document.querySelector('.sidebar');
+            const toolbar = document.querySelector('.toolbar');
+            const workspace = document.querySelector('.workspace');
+            const editorPane = document.querySelector('.editor-pane');
+            const previewPane = document.querySelector('.preview-pane');
+            const resizer = document.querySelector('.resizer');
+            
+            if (theme === 'dark') {
+                // Dark theme colors
+                body.style.background = '#1e1e1e';
+                body.style.color = '#d4d4d4';
+                sidebar.style.background = 'rgba(37, 37, 38, 0.9)';
+                sidebar.style.borderRightColor = 'rgba(255, 255, 255, 0.1)';
+                toolbar.style.background = 'rgba(37, 37, 38, 0.9)';
+                toolbar.style.borderBottomColor = 'rgba(255, 255, 255, 0.1)';
+                workspace.style.background = '#252526';
+                editorPane.style.background = '#1e1e1e';
+                previewPane.style.background = '#252526';
+                previewPane.style.borderLeftColor = 'rgba(255, 255, 255, 0.1)';
+                resizer.style.background = 'rgba(255, 255, 255, 0.05)';
+                
+                // Update CodeMirror theme
+                editor.setOption('theme', 'monokai');
+                
+                // Update text colors
+                document.querySelectorAll('.search-bar, .toolbar button').forEach(el => {
+                    el.style.background = 'rgba(37, 37, 38, 0.9)';
+                    el.style.color = '#d4d4d4';
+                    el.style.borderColor = 'rgba(255, 255, 255, 0.1)';
+                });
+                
+                document.querySelector('.new-note-btn').style.background = 'linear-gradient(135deg, #094771 0%, #062f4a 100%)';
+                
+            } else {
+                // Light theme (restore original)
+                body.style.background = '#f6f6f6';
+                body.style.color = '#1d1d1f';
+                sidebar.style.background = 'rgba(255, 255, 255, 0.8)';
+                sidebar.style.borderRightColor = 'rgba(0, 0, 0, 0.1)';
+                toolbar.style.background = 'rgba(255, 255, 255, 0.8)';
+                toolbar.style.borderBottomColor = 'rgba(0, 0, 0, 0.1)';
+                workspace.style.background = '#ffffff';
+                editorPane.style.background = '#ffffff';
+                previewPane.style.background = '#fafafa';
+                previewPane.style.borderLeftColor = 'rgba(0, 0, 0, 0.1)';
+                resizer.style.background = 'rgba(0, 0, 0, 0.05)';
+                
+                // Update CodeMirror theme
+                editor.setOption('theme', 'default');
+                
+                // Restore original text colors
+                document.querySelectorAll('.search-bar, .toolbar button').forEach(el => {
+                    el.style.background = 'rgba(255, 255, 255, 0.9)';
+                    el.style.color = '#1d1d1f';
+                    el.style.borderColor = 'rgba(0, 0, 0, 0.1)';
+                });
+                
+                document.querySelector('.new-note-btn').style.background = 'linear-gradient(135deg, #007aff 0%, #0056d6 100%)';
+            }
+        }
+        
+        // Load saved theme on startup
+        function loadTheme() {
+            const savedTheme = localStorage.getItem('markdown-app-theme') || 'light';
+            currentTheme = savedTheme;
+            applyTheme(currentTheme);
+            
+            const themeBtn = document.getElementById('theme-toggle');
+            themeBtn.textContent = currentTheme === 'light' ? '🌙 Dark' : '☀️ Light';
+        }
+        
+        // Close modals on outside click
+        document.querySelectorAll('.modal').forEach(modal => {
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

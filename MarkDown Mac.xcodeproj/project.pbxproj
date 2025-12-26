@@ -1,0 +1,669 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		AC3EBA482EF8182B000634A5 /* ShapeToolView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3EBA472EF8182B000634A5 /* ShapeToolView.swift */; };
+		AC3EBA4A2EF81898000634A5 /* MEJORAS.md in Resources */ = {isa = PBXBuildFile; fileRef = AC3EBA492EF81898000634A5 /* MEJORAS.md */; };
+		AC3EBA4C2EF81939000634A5 /* PaperMarkupView_Fixed.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3EBA4B2EF81939000634A5 /* PaperMarkupView_Fixed.swift */; };
+		AC3EBA4E2EF8198F000634A5 /* ERRORES_SOLUCIONADOS.md in Resources */ = {isa = PBXBuildFile; fileRef = AC3EBA4D2EF8198F000634A5 /* ERRORES_SOLUCIONADOS.md */; };
+		AC5F272C2EF036B500B248A2 /* PencilKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC5F272A2EF0369A00B248A2 /* PencilKit.framework */; };
+		AC5F272D2EF036B500B248A2 /* PencilKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AC5F272A2EF0369A00B248A2 /* PencilKit.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		AC5F27342EF03DD200B248A2 /* MarkDown Mac/MarkdownPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5F27332EF03DD200B248A2 /* MarkDown Mac/MarkdownPreviewView.swift */; };
+		AC5F27362EF03DDB00B248A2 /* MarkDown Mac/HSplitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5F27352EF03DDB00B248A2 /* MarkDown Mac/HSplitView.swift */; };
+		AC5F27382EF03F5200B248A2 /* MarkDown Mac/MermaidRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5F27372EF03F5200B248A2 /* MarkDown Mac/MermaidRenderer.swift */; };
+		BBB000012EEFD80200DB56A0 /* MarkDown Mac/MarkDown_MacApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA000012EEFD80200DB56A0 /* MarkDown Mac/MarkDown_MacApp.swift */; };
+		BBB000022EEFD80200DB56A0 /* MarkDown Mac/ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA000022EEFD80200DB56A0 /* MarkDown Mac/ContentView.swift */; };
+		BBB000032EEFD80200DB56A0 /* MarkDown Mac/HybridMarkdownEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA000032EEFD80200DB56A0 /* MarkDown Mac/HybridMarkdownEditor.swift */; };
+		BBB000042EEFD80200DB56A0 /* MarkDown Mac/NoteManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA000052EEFD80200DB56A0 /* MarkDown Mac/NoteManager.swift */; };
+		BBB000072EEFD80200DB56A0 /* MarkDown Mac/PaperMarkupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA000072EEFD80200DB56A0 /* MarkDown Mac/PaperMarkupView.swift */; };
+		CCC000012EEFD80200DB56A0 /* MarkDown Mac/WebResources in Resources */ = {isa = PBXBuildFile; fileRef = DDD000012EEFD80200DB56A0 /* MarkDown Mac/WebResources */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		AC3D0B442EEFD80600DB56A0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AC3D0B292EEFD80200DB56A0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AC3D0B302EEFD80200DB56A0;
+			remoteInfo = "MarkDown Mac";
+		};
+		AC3D0B4E2EEFD80600DB56A0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AC3D0B292EEFD80200DB56A0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AC3D0B302EEFD80200DB56A0;
+			remoteInfo = "MarkDown Mac";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		AC5F272E2EF036B500B248A2 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				AC5F272D2EF036B500B248A2 /* PencilKit.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		AAA000012EEFD80200DB56A0 /* MarkDown Mac/MarkDown_MacApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MarkDown Mac/MarkDown_MacApp.swift"; sourceTree = "<group>"; };
+		AAA000022EEFD80200DB56A0 /* MarkDown Mac/ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MarkDown Mac/ContentView.swift"; sourceTree = "<group>"; };
+		AAA000032EEFD80200DB56A0 /* MarkDown Mac/HybridMarkdownEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MarkDown Mac/HybridMarkdownEditor.swift"; sourceTree = "<group>"; };
+		AAA000042EEFD80200DB56A0 /* MarkDown Mac/Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MarkDown Mac/Info.plist"; sourceTree = "<group>"; };
+		AAA000052EEFD80200DB56A0 /* MarkDown Mac/NoteManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MarkDown Mac/NoteManager.swift"; sourceTree = "<group>"; };
+		AAA000072EEFD80200DB56A0 /* MarkDown Mac/PaperMarkupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MarkDown Mac/PaperMarkupView.swift"; sourceTree = "<group>"; };
+		AC3D0B312EEFD80200DB56A0 /* MarkDown Mac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MarkDown Mac.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AC3D0B432EEFD80600DB56A0 /* MarkDown MacTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "MarkDown MacTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AC3D0B4D2EEFD80600DB56A0 /* MarkDown MacUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "MarkDown MacUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AC3EBA472EF8182B000634A5 /* ShapeToolView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapeToolView.swift; sourceTree = "<group>"; };
+		AC3EBA492EF81898000634A5 /* MEJORAS.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = MEJORAS.md; sourceTree = "<group>"; };
+		AC3EBA4B2EF81939000634A5 /* PaperMarkupView_Fixed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaperMarkupView_Fixed.swift; sourceTree = "<group>"; };
+		AC3EBA4D2EF8198F000634A5 /* ERRORES_SOLUCIONADOS.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = ERRORES_SOLUCIONADOS.md; sourceTree = "<group>"; };
+		AC5F272A2EF0369A00B248A2 /* PencilKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PencilKit.framework; path = System/Library/Frameworks/PencilKit.framework; sourceTree = SDKROOT; };
+		AC5F27332EF03DD200B248A2 /* MarkDown Mac/MarkdownPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MarkDown Mac/MarkdownPreviewView.swift"; sourceTree = "<group>"; };
+		AC5F27352EF03DDB00B248A2 /* MarkDown Mac/HSplitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MarkDown Mac/HSplitView.swift"; sourceTree = "<group>"; };
+		AC5F27372EF03F5200B248A2 /* MarkDown Mac/MermaidRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MarkDown Mac/MermaidRenderer.swift"; sourceTree = "<group>"; };
+		DDD000012EEFD80200DB56A0 /* MarkDown Mac/WebResources */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "MarkDown Mac/WebResources"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		AC3D0B2E2EEFD80200DB56A0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AC3D0B402EEFD80600DB56A0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AC3D0B4A2EEFD80600DB56A0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AC5F272C2EF036B500B248A2 /* PencilKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		AC3D0B282EEFD80200DB56A0 = {
+			isa = PBXGroup;
+			children = (
+				AC3D0B322EEFD80200DB56A0 /* Products */,
+				AAA000012EEFD80200DB56A0 /* MarkDown Mac/MarkDown_MacApp.swift */,
+				AAA000022EEFD80200DB56A0 /* MarkDown Mac/ContentView.swift */,
+				AAA000032EEFD80200DB56A0 /* MarkDown Mac/HybridMarkdownEditor.swift */,
+				AAA000052EEFD80200DB56A0 /* MarkDown Mac/NoteManager.swift */,
+				AAA000042EEFD80200DB56A0 /* MarkDown Mac/Info.plist */,
+				DDD000012EEFD80200DB56A0 /* MarkDown Mac/WebResources */,
+				AC5F27292EF0369A00B248A2 /* Frameworks */,
+				AAA000072EEFD80200DB56A0 /* MarkDown Mac/PaperMarkupView.swift */,
+				AC5F27332EF03DD200B248A2 /* MarkDown Mac/MarkdownPreviewView.swift */,
+				AC5F27352EF03DDB00B248A2 /* MarkDown Mac/HSplitView.swift */,
+				AC5F27372EF03F5200B248A2 /* MarkDown Mac/MermaidRenderer.swift */,
+				AC3EBA472EF8182B000634A5 /* ShapeToolView.swift */,
+				AC3EBA492EF81898000634A5 /* MEJORAS.md */,
+				AC3EBA4B2EF81939000634A5 /* PaperMarkupView_Fixed.swift */,
+				AC3EBA4D2EF8198F000634A5 /* ERRORES_SOLUCIONADOS.md */,
+			);
+			sourceTree = "<group>";
+		};
+		AC3D0B322EEFD80200DB56A0 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AC3D0B312EEFD80200DB56A0 /* MarkDown Mac.app */,
+				AC3D0B432EEFD80600DB56A0 /* MarkDown MacTests.xctest */,
+				AC3D0B4D2EEFD80600DB56A0 /* MarkDown MacUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AC5F27292EF0369A00B248A2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AC5F272A2EF0369A00B248A2 /* PencilKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		AC3D0B302EEFD80200DB56A0 /* MarkDown Mac */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AC3D0B572EEFD80600DB56A0 /* Build configuration list for PBXNativeTarget "MarkDown Mac" */;
+			buildPhases = (
+				AC3D0B2D2EEFD80200DB56A0 /* Sources */,
+				AC3D0B2E2EEFD80200DB56A0 /* Frameworks */,
+				AC3D0B2F2EEFD80200DB56A0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "MarkDown Mac";
+			packageProductDependencies = (
+			);
+			productName = "MarkDown Mac";
+			productReference = AC3D0B312EEFD80200DB56A0 /* MarkDown Mac.app */;
+			productType = "com.apple.product-type.application";
+		};
+		AC3D0B422EEFD80600DB56A0 /* MarkDown MacTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AC3D0B5A2EEFD80600DB56A0 /* Build configuration list for PBXNativeTarget "MarkDown MacTests" */;
+			buildPhases = (
+				AC3D0B3F2EEFD80600DB56A0 /* Sources */,
+				AC3D0B402EEFD80600DB56A0 /* Frameworks */,
+				AC3D0B412EEFD80600DB56A0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AC3D0B452EEFD80600DB56A0 /* PBXTargetDependency */,
+			);
+			name = "MarkDown MacTests";
+			packageProductDependencies = (
+			);
+			productName = "MarkDown MacTests";
+			productReference = AC3D0B432EEFD80600DB56A0 /* MarkDown MacTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		AC3D0B4C2EEFD80600DB56A0 /* MarkDown MacUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AC3D0B5D2EEFD80600DB56A0 /* Build configuration list for PBXNativeTarget "MarkDown MacUITests" */;
+			buildPhases = (
+				AC3D0B492EEFD80600DB56A0 /* Sources */,
+				AC3D0B4A2EEFD80600DB56A0 /* Frameworks */,
+				AC3D0B4B2EEFD80600DB56A0 /* Resources */,
+				AC5F272E2EF036B500B248A2 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AC3D0B4F2EEFD80600DB56A0 /* PBXTargetDependency */,
+			);
+			name = "MarkDown MacUITests";
+			packageProductDependencies = (
+			);
+			productName = "MarkDown MacUITests";
+			productReference = AC3D0B4D2EEFD80600DB56A0 /* MarkDown MacUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		AC3D0B292EEFD80200DB56A0 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 2620;
+				LastUpgradeCheck = 2620;
+				TargetAttributes = {
+					AC3D0B302EEFD80200DB56A0 = {
+						CreatedOnToolsVersion = 26.2;
+					};
+					AC3D0B422EEFD80600DB56A0 = {
+						CreatedOnToolsVersion = 26.2;
+						TestTargetID = AC3D0B302EEFD80200DB56A0;
+					};
+					AC3D0B4C2EEFD80600DB56A0 = {
+						CreatedOnToolsVersion = 26.2;
+						TestTargetID = AC3D0B302EEFD80200DB56A0;
+					};
+				};
+			};
+			buildConfigurationList = AC3D0B2C2EEFD80200DB56A0 /* Build configuration list for PBXProject "MarkDown Mac" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = AC3D0B282EEFD80200DB56A0;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = AC3D0B322EEFD80200DB56A0 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				AC3D0B302EEFD80200DB56A0 /* MarkDown Mac */,
+				AC3D0B422EEFD80600DB56A0 /* MarkDown MacTests */,
+				AC3D0B4C2EEFD80600DB56A0 /* MarkDown MacUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		AC3D0B2F2EEFD80200DB56A0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AC3EBA4E2EF8198F000634A5 /* ERRORES_SOLUCIONADOS.md in Resources */,
+				AC3EBA4A2EF81898000634A5 /* MEJORAS.md in Resources */,
+				CCC000012EEFD80200DB56A0 /* MarkDown Mac/WebResources in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AC3D0B412EEFD80600DB56A0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AC3D0B4B2EEFD80600DB56A0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		AC3D0B2D2EEFD80200DB56A0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BBB000072EEFD80200DB56A0 /* MarkDown Mac/PaperMarkupView.swift in Sources */,
+				AC3EBA482EF8182B000634A5 /* ShapeToolView.swift in Sources */,
+				AC5F27342EF03DD200B248A2 /* MarkDown Mac/MarkdownPreviewView.swift in Sources */,
+				AC5F27362EF03DDB00B248A2 /* MarkDown Mac/HSplitView.swift in Sources */,
+				AC3EBA4C2EF81939000634A5 /* PaperMarkupView_Fixed.swift in Sources */,
+				BBB000012EEFD80200DB56A0 /* MarkDown Mac/MarkDown_MacApp.swift in Sources */,
+				BBB000022EEFD80200DB56A0 /* MarkDown Mac/ContentView.swift in Sources */,
+				BBB000032EEFD80200DB56A0 /* MarkDown Mac/HybridMarkdownEditor.swift in Sources */,
+				AC5F27382EF03F5200B248A2 /* MarkDown Mac/MermaidRenderer.swift in Sources */,
+				BBB000042EEFD80200DB56A0 /* MarkDown Mac/NoteManager.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AC3D0B3F2EEFD80600DB56A0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AC3D0B492EEFD80600DB56A0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		AC3D0B452EEFD80600DB56A0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AC3D0B302EEFD80200DB56A0 /* MarkDown Mac */;
+			targetProxy = AC3D0B442EEFD80600DB56A0 /* PBXContainerItemProxy */;
+		};
+		AC3D0B4F2EEFD80600DB56A0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AC3D0B302EEFD80200DB56A0 /* MarkDown Mac */;
+			targetProxy = AC3D0B4E2EEFD80600DB56A0 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		AC3D0B552EEFD80600DB56A0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		AC3D0B562EEFD80600DB56A0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+			};
+			name = Release;
+		};
+		AC3D0B582EEFD80600DB56A0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "MarkDown Mac/MarkDown Mac.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_APP_SANDBOX = NO;
+				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SELECTED_FILES = readonly;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "MarkDown Mac/Info.plist";
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 26.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "personal.MarkDown-Mac";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				REGISTER_APP_GROUPS = YES;
+				SDKROOT = auto;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2,7";
+				XROS_DEPLOYMENT_TARGET = 1.0;
+			};
+			name = Debug;
+		};
+		AC3D0B592EEFD80600DB56A0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "MarkDown Mac/MarkDown Mac.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_APP_SANDBOX = NO;
+				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SELECTED_FILES = readonly;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "MarkDown Mac/Info.plist";
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 26.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "personal.MarkDown-Mac";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				REGISTER_APP_GROUPS = YES;
+				SDKROOT = auto;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2,7";
+				XROS_DEPLOYMENT_TARGET = 1.0;
+			};
+			name = Release;
+		};
+		AC3D0B5B2EEFD80600DB56A0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				MACOSX_DEPLOYMENT_TARGET = 26.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "personal.MarkDown-MacTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2,7";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MarkDown Mac.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/MarkDown Mac";
+				XROS_DEPLOYMENT_TARGET = 1.0;
+			};
+			name = Debug;
+		};
+		AC3D0B5C2EEFD80600DB56A0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				MACOSX_DEPLOYMENT_TARGET = 26.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "personal.MarkDown-MacTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2,7";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MarkDown Mac.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/MarkDown Mac";
+				XROS_DEPLOYMENT_TARGET = 1.0;
+			};
+			name = Release;
+		};
+		AC3D0B5E2EEFD80600DB56A0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				MACOSX_DEPLOYMENT_TARGET = 26.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "personal.MarkDown-MacUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2,7";
+				TEST_TARGET_NAME = "MarkDown Mac";
+				XROS_DEPLOYMENT_TARGET = 1.0;
+			};
+			name = Debug;
+		};
+		AC3D0B5F2EEFD80600DB56A0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				MACOSX_DEPLOYMENT_TARGET = 15.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "personal.MarkDown-MacUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2,7";
+				TEST_TARGET_NAME = "MarkDown Mac";
+				XROS_DEPLOYMENT_TARGET = 26.2;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		AC3D0B2C2EEFD80200DB56A0 /* Build configuration list for PBXProject "MarkDown Mac" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AC3D0B552EEFD80600DB56A0 /* Debug */,
+				AC3D0B562EEFD80600DB56A0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AC3D0B572EEFD80600DB56A0 /* Build configuration list for PBXNativeTarget "MarkDown Mac" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AC3D0B582EEFD80600DB56A0 /* Debug */,
+				AC3D0B592EEFD80600DB56A0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AC3D0B5A2EEFD80600DB56A0 /* Build configuration list for PBXNativeTarget "MarkDown MacTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AC3D0B5B2EEFD80600DB56A0 /* Debug */,
+				AC3D0B5C2EEFD80600DB56A0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AC3D0B5D2EEFD80600DB56A0 /* Build configuration list for PBXNativeTarget "MarkDown MacUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AC3D0B5E2EEFD80600DB56A0 /* Debug */,
+				AC3D0B5F2EEFD80600DB56A0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = AC3D0B292EEFD80200DB56A0 /* Project object */;
+}

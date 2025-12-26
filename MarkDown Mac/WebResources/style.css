@@ -1,0 +1,421 @@
+:root {
+    --bg-color: #ffffff;
+    --text-color: #2e3b4e;
+    /* Inter dark blue-grey */
+    --accent-color: #3b82f6;
+    /* Premium Blue */
+    --border-color: #e5e7eb;
+    --toolbar-bg: rgba(255, 255, 255, 0.8);
+    --code-bg: #f3f4f6;
+    --selection-color: #dbeafe;
+
+    /* Typography */
+    --font-sans: 'Kalam', cursive, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+
+    /* Layout */
+    --pane-padding: 30px;
+    --text-color: #1a1a1a;
+    --sidebar-bg: #f5f5f7;
+    /* macOS-like sidebar */
+    --border-color: #e5e5e5;
+    --text-color: #333333;
+    --border-color: #e1e4e8;
+    --code-bg: #f6f8fa;
+    --quote-border: #dfe2e5;
+    --accent-color: #0366d6;
+}
+
+body.theme-dark {
+    --bg-color: #121212;
+    --text-color: #e0e0e0;
+    --border-color: #30363d;
+    --code-bg: #1f1f1f;
+    --quote-border: #6e7681;
+    --accent-color: #58a6ff;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: var(--font-sans);
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+    line-height: 1.6;
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+}
+
+#editor-pane {
+    height: 100%;
+    /* Use flex-basis for resizable width */
+    flex: 0 0 50%;
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid var(--border-color);
+}
+
+/* WYSIWYG-like Editor Styling */
+.CodeMirror {
+    height: 100%;
+    font-family: var(--font-sans);
+    /* System font, not mono */
+    font-size: 16px;
+    padding: 40px;
+    line-height: 1.8;
+    background-color: var(--bg-color) !important;
+    color: var(--text-color) !important;
+}
+
+/* Headers */
+.cm-header-1 {
+    font-size: 2em;
+    font-weight: 800;
+    line-height: 1.2;
+    color: var(--text-color);
+}
+
+.cm-header-2 {
+    font-size: 1.5em;
+    font-weight: 700;
+    line-height: 1.3;
+    color: var(--text-color);
+}
+
+.cm-header-3 {
+    font-size: 1.25em;
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+/* Dimmed Markdown Tokens (Minimal Style) */
+/* WYSIWYG-like Token Hiding */
+/* We use font-size 0 to effectively remove them from flow but keep them in DOM */
+.cm-formatting {
+    color: transparent !important;
+    font-size: 0 !important;
+    line-height: 0 !important;
+    opacity: 0 !important;
+    display: none !important;
+    /* Force display none if size 0 fails */
+}
+
+/* BUT reveal them on active line */
+.CodeMirror-activeline .cm-formatting {
+    color: var(--accent-color) !important;
+    font-size: inherit !important;
+    line-height: inherit !important;
+    opacity: 0.6 !important;
+    display: inline !important;
+}
+
+/* Specific handling for Headers */
+/* Implicitly handled by cm-header-1, etc. */
+
+
+/* Explicitly hide specific formatting tokens if generic class fails */
+.cm-formatting-header,
+.cm-formatting-strong,
+.cm-formatting-em,
+.cm-formatting-quote,
+.cm-formatting-link,
+.cm-formatting-image {
+    font-size: 0 !important;
+    opacity: 0 !important;
+    display: none !important;
+}
+
+.CodeMirror-activeline .cm-formatting-header,
+.CodeMirror-activeline .cm-formatting-strong,
+.CodeMirror-activeline .cm-formatting-em,
+.CodeMirror-activeline .cm-formatting-quote,
+.CodeMirror-activeline .cm-formatting-link,
+.CodeMirror-activeline .cm-formatting-image {
+    font-size: inherit !important;
+    opacity: 0.6 !important;
+    display: inline !important;
+}
+
+/* List bullets: Keep visible! */
+.cm-formatting-list {
+    font-size: inherit !important;
+    opacity: 1 !important;
+    line-height: inherit !important;
+    color: var(--accent-color) !important;
+    display: inline !important;
+}
+
+/* Images: Ensure widgets are clean */
+.inline-editor-image {
+    transition: opacity 0.2s;
+}
+
+.inline-editor-image:hover {
+    opacity: 0.9;
+}
+
+/* Toolbar minimal */
+/* (This interacts with native toolbar, but we simulate page aesthetic) */
+body {
+    padding-top: 10px;
+}
+
+/* Keep Link Text Normal */
+.cm-link {
+    color: var(--accent-color);
+    text-decoration: none;
+    opacity: 1;
+}
+
+.cm-string.cm-url {
+    opacity: 0.4;
+}
+
+/* Dim the URL part slightly */
+
+/* Inline Styles */
+.cm-strong {
+    font-weight: bold;
+    color: var(--text-color);
+}
+
+.cm-em {
+    font-style: italic;
+    color: var(--text-color);
+}
+
+.cm-quote {
+    color: #888;
+    font-style: italic;
+    border-left: 2px solid var(--quote-border);
+    padding-left: 10px;
+}
+
+.cm-comment {
+    color: #6a737d;
+    font-family: monospace;
+}
+
+.cm-code {
+    font-family: "SF Mono", monospace;
+    background: var(--code-bg);
+    padding: 2px 4px;
+    border-radius: 4px;
+    font-size: 0.9em;
+    color: var(--text-color);
+}
+
+
+/* Selected Text */
+.CodeMirror-selected {
+    background: rgba(3, 102, 214, 0.15) !important;
+}
+
+.CodeMirror-lines {
+    padding: 0;
+}
+
+/* Single Pane Layout (Default) */
+#editor-pane {
+    flex: 1;
+    /* Take full width */
+    border-right: none;
+    max-width: 800px;
+    /* Readability limit */
+    margin: 0 auto;
+}
+
+#preview-pane {
+    display: none;
+    /* Hidden by default */
+}
+
+#resizer {
+    display: none;
+    /* Disable resizing */
+}
+
+/* Custom Scrollbar Global */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--border-color);
+    border-radius: 4px;
+}
+
+.pane::-webkit-scrollbar {
+    width: 8px;
+}
+
+.pane::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.pane::-webkit-scrollbar-thumb {
+    background-color: var(--border-color);
+    border-radius: 4px;
+}
+
+/* Editor Pane */
+.editor-pane {
+    background-color: var(--bg-color);
+    border-right: 1px solid var(--border-color);
+}
+
+/* CodeMirror Customization */
+.CodeMirror {
+    height: 100% !important;
+    font-family: var(--font-mono);
+    font-size: 15px;
+    line-height: 1.6;
+    background-color: transparent !important;
+    color: var(--text-color) !important;
+}
+
+.CodeMirror-lines {
+    padding: var(--pane-padding) 0 !important;
+}
+
+.CodeMirror-gutters {
+    background-color: transparent !important;
+    border-right: none !important;
+}
+
+.CodeMirror-linenumber {
+    color: var(--border-color) !important;
+}
+
+/* Active Line Highlight */
+.CodeMirror-activeline-background {
+    background: rgba(59, 130, 246, 0.05) !important;
+}
+
+/* Preview Pane */
+.preview-pane {
+    position: relative;
+    /* Critical for SVG Overlay alignment */
+    padding: var(--pane-padding);
+    padding-left: 40px;
+    /* More breathing room */
+    background-color: var(--bg-color);
+    min-height: 100%;
+    /* Ensure it catches clicks if needed */
+}
+
+/* Markdown Typography */
+.markdown-body {
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.8;
+    font-size: 16px;
+}
+
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3,
+.markdown-body h4,
+.markdown-body h5,
+.markdown-body h6 {
+    margin-top: 1.5em;
+    margin-bottom: 0.8em;
+    color: var(--text-color);
+    font-weight: 600;
+}
+
+.markdown-body h1 {
+    font-size: 2.2em;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 0.3em;
+}
+
+.markdown-body h2 {
+    font-size: 1.8em;
+}
+
+.markdown-body p {
+    margin-bottom: 1.2em;
+}
+
+.markdown-body code {
+    font-family: var(--font-mono);
+    background-color: var(--code-bg);
+    padding: 0.2em 0.4em;
+    border-radius: 4px;
+    font-size: 0.9em;
+}
+
+.markdown-body pre {
+    background-color: var(--code-bg);
+    padding: 15px;
+    border-radius: 8px;
+    overflow-x: auto;
+    margin-bottom: 1.2em;
+}
+
+.markdown-body pre code {
+    background-color: transparent;
+    padding: 0;
+}
+
+.markdown-body blockquote {
+    border-left: 4px solid var(--accent-color);
+    margin: 0 0 1.2em 0;
+    padding-left: 20px;
+    color: var(--text-color);
+    opacity: 0.8;
+}
+
+.markdown-body img {
+    max-width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.markdown-body a {
+    color: var(--accent-color);
+    text-decoration: none;
+}
+
+.markdown-body a:hover {
+    text-decoration: underline;
+}
+
+/* Tables */
+.markdown-body table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-bottom: 1.2em;
+}
+
+.markdown-body th,
+.markdown-body td {
+    border: 1px solid var(--border-color);
+    padding: 8px 12px;
+}
+
+.markdown-body th {
+    background-color: var(--code-bg);
+    font-weight: 600;
+}
+
+/* Resizer */
+.resizer {
+    width: 5px;
+    cursor: col-resize;
+    background: transparent;
+    z-index: 10;
+    transition: background 0.2s;
+}
+
+.resizer:hover {
+    background: var(--accent-color);
+}

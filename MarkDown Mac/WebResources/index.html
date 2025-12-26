@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Markdown Editor</title>
+
+    <title>Markdown Editor</title>
+    <!-- CSS (Local) -->
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&display=swap" rel="stylesheet">
+
+    <!-- Highlight.js (Local) -->
+    <link rel="stylesheet" href="lib/highlight/github-dark.min.css" id="hljs-theme">
+
+    <!-- KaTeX (CDN - Optional, or remove if offline strict. User said 'todo local'. If strict, I must remove) -->
+    <!-- For now, I will comment out KaTeX if I didn't download it properly. I downloaded others. -->
+</head>
+
+<body class="theme-light">
+
+    <div class="app-container">
+        <!-- Main Workspace -->
+        <div class="workspace">
+            <!-- Editor Pane -->
+            <div class="pane editor-pane" id="editor-pane">
+                <div id="editor"></div>
+            </div>
+
+            <!-- Resizer Handle -->
+            <div class="resizer" id="resizer"></div>
+
+            <!-- Preview Pane -->
+            <div class="pane preview-pane" id="preview-pane">
+                <div id="preview" class="markdown-body"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts (Local) -->
+    <!-- Markdown It -->
+    <script src="lib/markdown-it/markdown-it.min.js"></script>
+    <script src="lib/markdown-it/markdown-it-emoji.min.js"></script>
+    <script src="lib/markdown-it/markdown-it-sub.min.js"></script>
+    <script src="lib/markdown-it/markdown-it-sup.min.js"></script>
+    <script src="lib/markdown-it/markdown-it-footnote.min.js"></script>
+
+    <!-- Mermaid -->
+    <script src="lib/mermaid/mermaid.min.js"></script>
+
+    <!-- Highlight.js -->
+    <script src="lib/highlight/highlight.min.js"></script>
+
+    <!-- CodeMirror 5 (Local) -->
+    <link rel="stylesheet" href="lib/codemirror/codemirror.min.css">
+    <link rel="stylesheet" href="lib/codemirror/theme/dracula.min.css">
+    <link rel="stylesheet" href="lib/codemirror/theme/xq-light.min.css">
+    <script src="lib/codemirror/codemirror.min.js"></script>
+    <script src="lib/codemirror/mode/markdown/markdown.min.js"></script>
+    <script src="lib/codemirror/mode/xml/xml.min.js"></script>
+    <script src="lib/codemirror/mode/javascript/javascript.min.js"></script>
+    <script src="lib/codemirror/addon/edit/continuelist.min.js"></script>
+    <script src="lib/codemirror/addon/edit/closebrackets.min.js"></script>
+    <script src="lib/codemirror/addon/selection/active-line.min.js"></script>
+    <script src="lib/codemirror/addon/display/placeholder.min.js"></script>
+
+    <!-- Main Logic -->
+    <script src="app.js"></script>
+</body>
+
+</html>

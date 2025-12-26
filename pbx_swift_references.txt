@@ -1,0 +1,28 @@
+		AC5F27342EF03DD200B248A2 /* MarkdownPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5F27332EF03DD200B248A2 /* MarkdownPreviewView.swift */; };
+		AC5F27362EF03DDB00B248A2 /* HSplitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5F27352EF03DDB00B248A2 /* HSplitView.swift */; };
+		AC5F27382EF03F5200B248A2 /* MermaidRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5F27372EF03F5200B248A2 /* MermaidRenderer.swift */; };
+		BBB000012EEFD80200DB56A0 /* MarkDown Mac/MarkDown_MacApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA000012EEFD80200DB56A0 /* MarkDown Mac/MarkDown_MacApp.swift */; };
+		BBB000022EEFD80200DB56A0 /* MarkDown Mac/ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA000022EEFD80200DB56A0 /* MarkDown Mac/ContentView.swift */; };
+		BBB000032EEFD80200DB56A0 /* MarkDown Mac/HybridMarkdownEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA000032EEFD80200DB56A0 /* MarkDown Mac/HybridMarkdownEditor.swift */; };
+		BBB000042EEFD80200DB56A0 /* MarkDown Mac/NoteManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA000052EEFD80200DB56A0 /* MarkDown Mac/NoteManager.swift */; };
+		AAA000012EEFD80200DB56A0 /* MarkDown Mac/MarkDown_MacApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MarkDown Mac/MarkDown_MacApp.swift"; sourceTree = "<group>"; };
+		AAA000022EEFD80200DB56A0 /* MarkDown Mac/ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MarkDown Mac/ContentView.swift"; sourceTree = "<group>"; };
+		AAA000032EEFD80200DB56A0 /* MarkDown Mac/HybridMarkdownEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MarkDown Mac/HybridMarkdownEditor.swift"; sourceTree = "<group>"; };
+		AAA000052EEFD80200DB56A0 /* MarkDown Mac/NoteManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MarkDown Mac/NoteManager.swift"; sourceTree = "<group>"; };
+		AC5F27332EF03DD200B248A2 /* MarkdownPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownPreviewView.swift; sourceTree = "<group>"; };
+		AC5F27352EF03DDB00B248A2 /* HSplitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HSplitView.swift; sourceTree = "<group>"; };
+		AC5F27372EF03F5200B248A2 /* MermaidRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MermaidRenderer.swift; sourceTree = "<group>"; };
+				AAA000012EEFD80200DB56A0 /* MarkDown Mac/MarkDown_MacApp.swift */,
+				AAA000022EEFD80200DB56A0 /* MarkDown Mac/ContentView.swift */,
+				AAA000032EEFD80200DB56A0 /* MarkDown Mac/HybridMarkdownEditor.swift */,
+				AAA000052EEFD80200DB56A0 /* MarkDown Mac/NoteManager.swift */,
+				AC5F27332EF03DD200B248A2 /* MarkdownPreviewView.swift */,
+				AC5F27352EF03DDB00B248A2 /* HSplitView.swift */,
+				AC5F27372EF03F5200B248A2 /* MermaidRenderer.swift */,
+				AC5F27342EF03DD200B248A2 /* MarkdownPreviewView.swift in Sources */,
+				AC5F27362EF03DDB00B248A2 /* HSplitView.swift in Sources */,
+				BBB000012EEFD80200DB56A0 /* MarkDown Mac/MarkDown_MacApp.swift in Sources */,
+				BBB000022EEFD80200DB56A0 /* MarkDown Mac/ContentView.swift in Sources */,
+				BBB000032EEFD80200DB56A0 /* MarkDown Mac/HybridMarkdownEditor.swift in Sources */,
+				AC5F27382EF03F5200B248A2 /* MermaidRenderer.swift in Sources */,
+				BBB000042EEFD80200DB56A0 /* MarkDown Mac/NoteManager.swift in Sources */,
